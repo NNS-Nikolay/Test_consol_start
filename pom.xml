@@ -69,11 +69,11 @@
                 <version>3.2.3</version>
                 <configuration>
                     <argLine>
-                        -javaagent:"/home/runner/.m2/repositoryorg/aspectj/aspectjweaver/1.9.23/aspectjweaver-1.9.23.jar"
+                        -javaagent:"${settings.localRepository}org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <includes>
-                        <include>*.java</include>
-                    </includes>
+<!--                    <includes>-->
+<!--                        <include>*.java</include>-->
+<!--                    </includes>-->
                 </configuration>
                 <dependencies>
                 </dependencies>
