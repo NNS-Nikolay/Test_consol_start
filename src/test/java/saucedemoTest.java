@@ -1,5 +1,3 @@
-package tests;
-
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.junit5.BrowserPerTestStrategyExtension;

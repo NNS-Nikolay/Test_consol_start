@@ -8,7 +8,8 @@ import io.qameta.allure.Step;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
-import static tests.saucedemoTest.testHelper;
+import static pageObjects.InventoryPage.testHelper;
+
 
 public class CheckoutStepOnePage {
     
