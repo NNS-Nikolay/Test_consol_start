@@ -19,7 +19,22 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-
+      - run:
+          name: Install Google Chrome
+          environment:
+            ORB_PARAM_CHROME_VERSION: <<parameters.chrome-version>>
+            ORB_PARAM_REPLACE_EXISTING: <<parameters.replace-existing>>
+            ORB_PARAM_CHANNEL: << parameters.channel >>
+            ORB_PARAM_SAVE_CACHE: <<parameters.use_cache>>
+          command: <<include(scripts/install-chrome.sh)>>
+      - when:
+          condition: <<parameters.use_cache>>
+          steps:
+            - save_cache:
+                key: chrome-<<parameters.cache_key>>-<<parameters.chrome-version>>-{{ arch }}
+                paths:
+                  - /tmp/chrome.tar.gz
 
       - name: Run tests
         run: mvn clean test
+    uses:
