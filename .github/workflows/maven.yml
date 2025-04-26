@@ -19,21 +19,27 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - run:
-          name: Install Google Chrome
-          environment:
-            ORB_PARAM_CHROME_VERSION: <<parameters.chrome-version>>
-            ORB_PARAM_REPLACE_EXISTING: <<parameters.replace-existing>>
-            ORB_PARAM_CHANNEL: << parameters.channel >>
-            ORB_PARAM_SAVE_CACHE: <<parameters.use_cache>>
-          command: <<include(scripts/install-chrome.sh)>>
-      - when:
-          condition: <<parameters.use_cache>>
-          steps:
-            - save_cache:
-                key: chrome-<<parameters.cache_key>>-<<parameters.chrome-version>>-{{ arch }}
-                paths:
-                  - /tmp/chrome.tar.gz
+      - name: Установка браузера Google Chrome
+        hosts: all
+        tasks:
+          - name: Добавить репозиторий Google Chrome
+            apt_repository:
+              repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+              state: present
+
+          - name: Установить ключи для репозитория
+            apt_key:
+              url: 'https://dl.google.com/linux/linux_signing_key.pub'
+              state: present
+
+          - name: Обновить список пакетов
+            apt:
+              update_cache: yes
+
+          - name: Установить Google Chrome
+            apt:
+              name: google-chrome-stable
+              state: present
 
       - name: Run tests
         run: mvn clean test
