@@ -19,28 +19,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Установка браузера Google Chrome
-        hosts: all
-        tasks:
-          - name: Добавить репозиторий Google Chrome
-            apt_repository:
-              repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
-              state: present
 
-          - name: Установить ключи для репозитория
-            apt_key:
-              url: 'https://dl.google.com/linux/linux_signing_key.pub'
-              state: present
-
-          - name: Обновить список пакетов
-            apt:
-              update_cache: yes
-
-          - name: Установить Google Chrome
-            apt:
-              name: google-chrome-stable
-              state: present
 
       - name: Run tests
         run: mvn clean test
-    uses:
