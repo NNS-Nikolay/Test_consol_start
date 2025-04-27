@@ -28,5 +28,18 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Run tests
+      - name: Установить Allure
+        run: |
+          sudo apt-get install -y allure
+
+      - name: Запуск тестов с генерацией отчетов Allure
         run: mvn clean test
+
+      - name: Генерация отчета Allure
+        run: mvn allure:report
+
+      - name: Публикация отчета Allure
+        run: |
+          mkdir -p allure-results
+          cp -r target/allure-results/* allure-results/
+          allure serve allure-results
