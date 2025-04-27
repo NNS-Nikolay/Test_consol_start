@@ -43,3 +43,4 @@ jobs:
           mkdir -p allure-results
           cp -r target/allure-results/* allure-results/
           allure serve allure-results
+          
