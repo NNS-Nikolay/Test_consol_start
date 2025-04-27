@@ -45,7 +45,7 @@ public class saucedemoTest {
         Configuration.browser = "chrome";
         Configuration.browserPosition = "10x10";
         Configuration.timeout = 20000;
-        Configuration.headless = true; //Способ запуска браузера
+        Configuration.headless = false; //Способ запуска браузера
     }
 
     @Test
