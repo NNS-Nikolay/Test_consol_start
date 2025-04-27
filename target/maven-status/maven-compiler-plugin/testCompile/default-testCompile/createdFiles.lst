@@ -1,0 +1,16 @@
+component\Buyer.class
+component\InventoryItemComponent.class
+helpers\TestHelper.class
+pageObjects\InventoryPage.class
+saucedemoTest.class
+ext\CartPageResolver.class
+pageObjects\CheckoutStepOnePage.class
+ext\CheckoutStepOnePageResolver.class
+pageObjects\LoginPage.class
+pageObjects\CartPage.class
+pageObjects\CheckoutStepTwoPage.class
+ext\LoginPageResolver.class
+helpers\PropertiesHelper.class
+component\User.class
+ext\CheckoutStepTwoPageResolver.class
+ext\InventoryPageResolver.class
