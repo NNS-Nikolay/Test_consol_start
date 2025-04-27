@@ -1,14 +1,16 @@
-name: Java CI with Maven on Windows
+name: Java CI with Maven
 
 on:
   push:
     branches:
       - master
-
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     services:
       selenium:
@@ -26,12 +28,14 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
+          distribution: 'temurin'
+          cache: maven
 
       - name: Install dependencies
         run: mvn install
 
       - name: Run tests
-        run: mvn test
+        run: mvn clean test
 
       - name: Generate Allure report
         run: mvn allure:report
@@ -41,5 +45,3 @@ jobs:
         with:
           name: allure-report
           path: target/site/allure-maven-plugin/
-
-
