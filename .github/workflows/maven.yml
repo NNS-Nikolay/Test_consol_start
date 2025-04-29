@@ -38,9 +38,6 @@ jobs:
         run: mvn clean test
 
       - name: Generate Allure report
-        run: allure serve
-
-      - name: Generate Allure report
         run: mvn allure:report
 
       - name: Upload Allure report
