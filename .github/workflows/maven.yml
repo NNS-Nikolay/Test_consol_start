@@ -34,11 +34,13 @@ jobs:
       - name: Install dependencies
         run: mvn install
 
-      - name: Run tests
-        run: mvn clean test
+
 
       - name: 11Check allure-results
         run: mkdir -p /home/runner/work/Test_consol_start/Test_consol_start/target/allure-results
+
+      - name: Run tests
+        run: mvn clean test
 
       - name: Generate Allure report
         run: mvn allure:report
