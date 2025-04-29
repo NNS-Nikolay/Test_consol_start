@@ -40,8 +40,8 @@ jobs:
 #      - name: Generate Allure report
 #        run: mvn allure:report
 
-      - name: Check allure-results
-        run: ls -la target/allure-results/
+#      - name: Check allure-results
+#        run: ls -la target/allure-results/
 
       - name: Generate Allure report
         run: mvn allure:report
