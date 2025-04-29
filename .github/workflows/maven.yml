@@ -37,11 +37,19 @@ jobs:
       - name: Run tests
         run: mvn clean test
 
+      - name: Check allure-results
+        run: |
+          if [ -d "target/allure-results/" ]; then
+            echo "Allure results directory exists."
+          else
+            echo "Allure results directory does not exist."
+          fi
+
       - name: Generate Allure report
         run: mvn allure:report
 
-      - name: Open Allure
-        run: mvn allure:serve
+#      - name: Open Allure
+#        run: mvn allure:serve
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
