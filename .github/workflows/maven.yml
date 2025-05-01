@@ -43,7 +43,6 @@ jobs:
         run: |
           ALLURE_VERSION=2.34.0
           wget "https://github.com/allure-framework/allure2/releases/download/2.34.0/allure-2.34.0.tgz"
-#          unzip "allure-${ALLURE_VERSION}-zip.zip" -d /opt/
           ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/local/bin/allure
 #
 #      - name: Generate Report
