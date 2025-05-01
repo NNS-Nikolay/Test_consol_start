@@ -31,11 +31,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-#      - name: Install dependencies
-#        run: mvn install
-#
-#      - name: Run tests
-#        run: mvn clean test
+      - name: Install dependencies
+        run: mvn install
+
+      - name: Run tests
+        run: mvn clean test
 
 
 
@@ -44,18 +44,18 @@ jobs:
           ALLURE_VERSION=2.34.0
           wget "https://github.com/allure-framework/allure2/releases/download/2.34.0/allure-2.34.0.tgz"
           ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/local/bin/allure
-#
-#      - name: Generate Report
-#        run: |
-#          mkdir -p allure-report
-#          allure generate --clean target/allure-results -o allure-report
-#
-#      - name: Upload Allure Report as artifact
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: allure-report
-#          path: allure-report
-#
-#      - name: Deploy to GitHub Pages
-#        id: deployment
-#        uses: actions/deploy-pages@v4
+
+      - name: Generate Report
+        run: |
+          mkdir -p allure-report
+          allure generate --clean target/allure-results -o allure-report
+
+      - name: Upload Allure Report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
