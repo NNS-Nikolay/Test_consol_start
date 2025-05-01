@@ -49,7 +49,7 @@ jobs:
         run: allure --version
 
       - name: Check allure results
-        run: ls -la target/allure-results || echo "No allure results found"
+        run: ls -la target/allure-reports || echo "No allure results found"
 
 
 
