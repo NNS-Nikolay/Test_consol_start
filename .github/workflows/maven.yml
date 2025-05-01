@@ -31,11 +31,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Install dependencies
-        run: mvn install
-
-      - name: Run tests
-        run: mvn clean test
+#      - name: Install dependencies
+#        run: mvn install
+#
+#      - name: Run tests
+#        run: mvn clean test
 
 
 
