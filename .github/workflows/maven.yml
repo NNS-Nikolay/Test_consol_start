@@ -54,8 +54,8 @@ jobs:
         run: mvn clean test
 
 
-      - name: Check allure results
-        run: ls -la target/allure-results
+#      - name: Check allure results
+#        run: ls -la target/allure-results
 
 
       - name: Generate Report
