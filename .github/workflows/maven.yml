@@ -49,14 +49,14 @@ jobs:
         run: allure --version
 
 
-      - name: Check allure results
-        run: ls -la target/allure-results
-
-
       - name: Generate Report
         run: |
           mkdir -p allure-report
           allure generate --clean target/allure-results -o allure-report
+          
+
+      - name: Check allure results
+        run: ls -la target/allure-results
 
 #      - name: Generate Allure Report
 #        run: |
