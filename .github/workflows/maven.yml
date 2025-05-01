@@ -45,6 +45,9 @@ jobs:
           wget "https://github.com/allure-framework/allure2/releases/download/2.34.0/allure-2.34.0.tgz"
           ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/local/bin/allure
 
+      - name: Check Allure version
+        run: allure --version
+
       - name: Generate Report
         run: |
           allure generate target/allure-results --clean -o allure-report
