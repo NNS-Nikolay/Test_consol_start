@@ -55,8 +55,8 @@ jobs:
 
       - name: Generate Report
         run: |
-          mkdir -p allure-report
-          allure generate --clean target/allure-results -o allure-report
+          mkdir -p allure-reports
+          allure generate --clean target/allure-reports -o allure-report
           
 
 
