@@ -48,14 +48,9 @@ jobs:
       - name: Check Allure version
         run: allure --version
 
+      - name: Check allure results
+        run: ls -la target/allure-results || echo "No allure results found"
 
-
-      - name: Run tests
-        run: mvn clean test
-
-
-#      - name: Check allure results
-#        run: ls -la target/allure-results
 
 
       - name: Generate Report
@@ -64,11 +59,6 @@ jobs:
           allure generate --clean target/allure-results -o allure-report
           
 
-
-#      - name: Generate Allure Report
-#        run: |
-#          mkdir -p allure-results
-#          allure generate target/allure-results --clean -o allure-report
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
