@@ -34,10 +34,6 @@ jobs:
       - name: Install dependencies
         run: mvn install
 
-      - name: Run tests
-        run: mvn clean test
-
-
       - name: Install Allure CLI
         run: |
           ALLURE_VERSION=2.33.0
@@ -47,6 +43,10 @@ jobs:
 
       - name: Check Allure version
         run: allure --version
+
+
+      - name: Run tests
+        run: mvn clean test
 
 
       - name: Generate Report
