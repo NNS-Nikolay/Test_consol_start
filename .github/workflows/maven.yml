@@ -34,6 +34,10 @@ jobs:
       - name: Install dependencies
         run: mvn install
 
+
+      - name: Run tests with debug
+        run: mvn clean test -Dmaven.test.failure.ignore=true
+
       - name: Install Allure CLI
         run: |
           ALLURE_VERSION=2.33.0
@@ -45,8 +49,13 @@ jobs:
         run: allure --version
 
 
+
       - name: Run tests
         run: mvn clean test
+
+
+      - name: Check allure results
+        run: ls -la target/allure-results
 
 
       - name: Generate Report
@@ -55,8 +64,6 @@ jobs:
           allure generate --clean target/allure-results -o allure-report
           
 
-      - name: Check allure results
-        run: ls -la target/allure-results
 
 #      - name: Generate Allure Report
 #        run: |
