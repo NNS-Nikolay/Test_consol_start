@@ -31,32 +31,35 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Install dependencies
+      - name: Установить зависимостей
         run: mvn install
 
 
-      - name: Run tests with debug
+      - name: Запуск тестов с отладкой
         run: mvn clean test -Dmaven.test.failure.ignore=true | tee test-output.log
 
-      - name: Install Allure CLI
+      - name: Установка Allure CLI
         run: |
           ALLURE_VERSION=2.33.0
           wget "https://github.com/allure-framework/allure2/releases/download/2.33.0/allure-2.33.0.zip"
           unzip "allure-2.33.0.zip" -d /opt/
           ln -s /opt/allure-2.33.0/bin/allure /usr/local/bin/allure
 
-      - name: Check Allure version
+      - name: Проверка установленной версии Allure
         run: allure --version
 
-      - name: Check allure results
-        run: ls -la target/allure-results || echo "No allure results found"
+      - name: Создание директории для результатов
+        run: mkdir -p allure-results
+
+      - name: Проверка наличия каталога
+        run: ls -la target/allure-results || echo "Файл или директория не найдены"
 
 
-      - name: Create allure report directory
+      - name: Создание директории для репорта
         run: mkdir -p allure-report
 
 
-      - name: Generate Report
+      - name: Генерация репорта
         run: |
           allure generate --clean target/allure-results -o allure-report
           
