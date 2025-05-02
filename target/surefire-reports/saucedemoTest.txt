@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: saucedemoTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.83 s -- in saucedemoTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.89 s -- in saucedemoTest
