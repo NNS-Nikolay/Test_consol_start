@@ -56,7 +56,7 @@ jobs:
 
 
       - name: Генерация репорта
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './allure-report'
           
