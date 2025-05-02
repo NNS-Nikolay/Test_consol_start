@@ -46,8 +46,9 @@ jobs:
 
       - name: Проверка наличия каталога
         run: mkdir -p target/allure-report
-            ls -la target/allure-results || echo "Файл или директория не найдены"
-            ls -la target/allure-report || echo "Файл или директория не найдены"
+            ls -la target/allure-results || echo "Файл или директория results не найдены"
+          
+            ls -la target/allure-report || echo "Файл или директория report не найдены"
 
 
 
