@@ -49,14 +49,16 @@ jobs:
         run: allure --version
 
       - name: Check allure results
-        run: ls -la target/allure-reports || echo "No allure results found"
+        run: ls -la target/allure-results || echo "No allure results found"
 
+
+      - name: Create allure report directory
+        run: mkdir -p allure-report
 
 
       - name: Generate Report
         run: |
-          mkdir -p allure-reports
-          allure generate --clean target/allure-reports -o allure-report
+          allure generate --clean target/allure-results -o allure-report
           
 
 
