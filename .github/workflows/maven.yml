@@ -35,8 +35,7 @@ jobs:
         run: mvn install
 
 
-      - name: Запуск тестов с отладкой
-        run: mvn clean test -Dmaven.test.failure.ignore=true | tee test-output.log
+
 
       - name: Установка Allure CLI
         run: |
@@ -59,13 +58,17 @@ jobs:
         run: mkdir -p allure-report
 
 
+      - name: Запуск тестов с отладкой
+        run: mvn clean test -Dmaven.test.failure.ignore=true | tee test-output.log
+
+
       - name: Генерация репорта
         run: |
           allure generate --clean target/allure-results -o allure-report
           
 
 
-      - name: Upload Allure Report
+      - name: Создание артефактов
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
