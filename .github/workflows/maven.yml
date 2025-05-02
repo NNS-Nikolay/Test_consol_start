@@ -29,8 +29,6 @@ jobs:
         run: mvn install
 
 
-
-
       - name: Установка Allure CLI
         run: |
           ALLURE_VERSION=2.33.0
@@ -42,33 +40,26 @@ jobs:
         run: allure --version
 
       - name: Создание директории для результатов
-        run: mkdir -p target/allure-results
+        run: |
+          mkdir -p target/allure-results
+          mkdir -p target/allure-report
 
       - name: Проверка наличия каталога
-        run: ls -la target/allure-results || echo "Файл или директория не найдены"
-
-
-      - name: Создание директории для репорта
         run: mkdir -p target/allure-report
+            ls -la target/allure-results || echo "Файл или директория не найдены"
+            ls -la target/allure-report || echo "Файл или директория не найдены"
 
 
-      - name: Проверка наличия каталога
-        run: ls -la target/allure-report || echo "Файл или директория не найдены"
 
-
-      - name: Запуск тестов с отладкой
+      - name: Запуск тестов с логироварием
         run: mvn clean test | tee test-output.log
 
 
       - name: Генерация репорта
-        run: |
-          allure generate --clean target/allure-results -o allure-report
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './allure-report'
           
 
 
-      - name: Создание артефактов
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
 
