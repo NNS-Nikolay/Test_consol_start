@@ -49,7 +49,7 @@ jobs:
         run: allure --version
 
       - name: Создание директории для результатов
-        run: mkdir -p allure-results
+        run: mkdir -p target/allure-results
 
       - name: Проверка наличия каталога
         run: ls -la target/allure-results || echo "Файл или директория не найдены"
