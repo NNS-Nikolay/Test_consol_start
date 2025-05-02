@@ -55,7 +55,11 @@ jobs:
 
 
       - name: Создание директории для репорта
-        run: mkdir -p allure-report
+        run: mkdir -p target/allure-report
+
+
+      - name: Проверка наличия каталога
+        run: ls -la target/allure-results || echo "Файл или директория не найдены"
 
 
       - name: Запуск тестов с отладкой
