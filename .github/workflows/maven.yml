@@ -28,7 +28,6 @@ jobs:
       - name: Установить зависимостей
         run: mvn install
 
-
       - name: Установка Allure CLI
         run: |
           ALLURE_VERSION=2.33.0
@@ -39,26 +38,23 @@ jobs:
       - name: Проверка установленной версии Allure
         run: allure --version
 
-      - name: Создание директории для результатов
-        run: |
-          mkdir -p target/allure-results
-          mkdir -p target/allure-report
+      - name: Создание директории allure-results
+        run: mkdir -p target/allure-results
 
-      - name: Проверка наличия каталога
+      - name: Проверка наличия каталога allure-results
+        run: ls -la target/allure-results || echo "Файл или директория allure-results не найдены"
+
+      - name: Создание директории allure-report
         run: mkdir -p target/allure-report
-            ls -la target/allure-results || echo "Файл или директория не найдены"
-            ls -la target/allure-report || echo "Файл или директория не найдены"
 
+      - name: Проверка наличия каталога allure-report
+        run: ls -la target/allure-report || echo "Файл или директория allure-report не найдены"
 
-
-      - name: Запуск тестов с логироварием
+      - name: Запуск тестов с логированием
         run: mvn clean test | tee test-output.log
-
 
       - name: Генерация репорта
         run: |
           allure generate --clean target/allure-results -o allure-report
           
-
-
 
