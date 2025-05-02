@@ -36,7 +36,7 @@ jobs:
 
 
       - name: Run tests with debug
-        run: mvn clean test -Dmaven.test.failure.ignore=true
+        run: mvn clean test -Dmaven.test.failure.ignore=true | tee test-output.log
 
       - name: Install Allure CLI
         run: |
